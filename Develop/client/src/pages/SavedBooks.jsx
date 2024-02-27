@@ -6,14 +6,15 @@ import {
   Row,
   Col
 } from 'react-bootstrap';
-import { useQuery, useMutation } from '@apollo/client'; // Import useQuery and useMutation hooks
-import { GET_ME, REMOVE_BOOK } from '../utils/queries'; // Import GET_ME and REMOVE_BOOK queries/mutations
+import { useQuery, useMutation } from '@apollo/client'; 
+import { GET_ME } from '../utils/queries'; 
+import { REMOVE_BOOK } from '../utils/mutations';
 import Auth from '../utils/auth';
 import { removeBookId } from '../utils/localStorage';
 
 const SavedBooks = () => {
-  const { loading, data } = useQuery(GET_ME); // Execute GET_ME query using useQuery hook
-  const [removeBook] = useMutation(REMOVE_BOOK); // Define the REMOVE_BOOK mutation hook
+  const { loading, data } = useQuery(GET_ME); 
+  const [removeBook] = useMutation(REMOVE_BOOK); 
 
   const handleDeleteBook = async (bookId) => {
     const token = Auth.loggedIn() ? Auth.getToken() : null;

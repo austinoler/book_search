@@ -10,6 +10,7 @@ import {
 import { useMutation } from '@apollo/client'; // Import the useMutation hook
 import Auth from '../utils/auth';
 import { SAVE_BOOK } from '../utils/mutations'; // Import the SAVE_BOOK mutation
+import { getSavedBookIds } from '../utils/bookUtils';
 
 const SearchBooks = () => {
   const [searchedBooks, setSearchedBooks] = useState([]);

@@ -1,7 +1,8 @@
 const express = require('express');
 const path = require('path');
 const { ApolloServer } = require('apollo-server-express');
-const { typeDefs, resolvers } = require('./schemas');
+const { typeDefs } = require('./schemas/typeDefs'); // Importing typeDefs
+const { resolvers } = require('./schemas/resolvers'); // Importing resolvers
 const { authMiddleware } = require('./utils/auth');
 const db = require('./config/connection');
 
@@ -9,6 +10,8 @@ const app = express();
 const PORT = process.env.PORT || 3001;
 
 async function startApolloServer() {
+  console.log('Before calling startApolloServer'); // Adding a console log to check if this part is executed
+  console.log('typeDefs:', typeDefs); // Adding a console log to check the value of typeDefs
   const server = new ApolloServer({
     typeDefs,
     resolvers,
@@ -28,4 +31,6 @@ async function startApolloServer() {
 }
 
 startApolloServer();
+
+
 
